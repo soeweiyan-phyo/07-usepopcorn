@@ -100,9 +100,8 @@ function App() {
           setMovies(data.Search);
           setError("");
         } catch (err) {
-          console.log(err.message);
-
           if (err.name !== "AbortError") {
+            console.log(err.message);
             setError(err.message);
           }
         } finally {
@@ -116,6 +115,7 @@ function App() {
         return;
       }
 
+      handleCloseMovie();
       fetchMovies();
 
       return function () {
@@ -305,7 +305,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       function callback(e) {
         if (e.code === "Escape") {
           onCloseMovie();
-          console.log("CLOSING");
         }
       }
 
